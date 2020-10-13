@@ -28,9 +28,40 @@ class WelcomeView: UIView, CodeView {
     
     let contentView: UIView = {
         let contentView = UIView(frame: .zero)
-        contentView.backgroundColor = .red
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
+    }()
+    
+    let mainImage: UIImageView = {
+        let imageView = UIImageView(frame: .zero)
+        imageView.image = #imageLiteral(resourceName: "home")
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    let titleLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "Welcome!"
+        label.textAlignment = .center
+        label.font = .title
+        label.textColor = .title
+        label.accessibilityIdentifier = "welcome-title-label"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    let bodyLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "Let's workout? Here you can create the perfect trainning"
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.font = .body
+        label.textColor = .body
+        label.accessibilityIdentifier = "welcome-title-label"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
     
     // MARK: - Super Methods
@@ -46,6 +77,9 @@ class WelcomeView: UIView, CodeView {
     }
     
     func setupComponents() {
+        contentView.addSubview(mainImage)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(bodyLabel)
         scrollView.addSubview(contentView)
         addSubview(scrollView)
     }
@@ -71,9 +105,25 @@ class WelcomeView: UIView, CodeView {
         let contentViewHeightConstraint = contentView.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
         contentViewHeightConstraint.priority = .defaultLow
         contentViewHeightConstraint.isActive = true
+        
+        //MainImage
+        mainImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Margin.verticalVeryLarge).isActive = true
+        mainImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Margin.horizontal).isActive = true
+        mainImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Margin.horizontal).isActive = true
+        mainImage.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.3).isActive = true
+        
+        //TitleLabel
+        titleLabel.topAnchor.constraint(equalTo: mainImage.bottomAnchor, constant: Margin.verticalVeryLarge).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: mainImage.leadingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: mainImage.trailingAnchor).isActive = true
+        
+        //BodyLabel
+        bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Margin.verticalSmall).isActive = true
+        bodyLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+        bodyLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
     }
     
     func setupExtraConfigurations() {
-        backgroundColor = .white
+        backgroundColor = .view
     }
 }
