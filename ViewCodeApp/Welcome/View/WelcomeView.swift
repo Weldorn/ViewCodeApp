@@ -14,6 +14,8 @@ protocol WelcomeViewDelegate: AnyObject {
     func googleButtonTapped()
 }
 
+//PropertyWrapper
+
 class WelcomeView: UIView, CodeView {
     
     // MARK: - Properties
