@@ -64,6 +64,29 @@ class WelcomeView: UIView, CodeView {
         return label
     }()
     
+    let phoneTextField: UITextField = {
+        let textField = UITextField(frame: .zero)
+        textField.placeholder = "Phone"
+        textField.borderStyle = .roundedRect
+        textField.keyboardType = .phonePad
+        textField.textAlignment = .center
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    let buttonStackView: UIStackView = {
+        let stackView = UIStackView(frame: .zero)
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .center
+        stackView.spacing = Margin.horizontalSmall
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    let loginButton = WelcomeButton(style: .main, title: "Login")
+    let signUpButton = WelcomeButton(style: .secondary, title: "Sign Up")
+    
     // MARK: - Super Methods
     init(delegate: WelcomeViewDelegate) {
         super.init(frame: .zero)
@@ -76,12 +99,28 @@ class WelcomeView: UIView, CodeView {
         super.init(coder: coder)
     }
     
+    @objc
+    private func buttonTapped(sender: UIButton) {
+        switch sender {
+        case loginButton:
+            delegate?.loginButtonTapped(withPhone: phoneTextField.text!)
+        case signUpButton:
+            delegate?.signUpButtonTapped()
+        default:
+            break
+        }
+    }
+    
     func setupComponents() {
+        addSubview(scrollView)
+        contentView.addSubview(phoneTextField)
         contentView.addSubview(mainImage)
         contentView.addSubview(titleLabel)
         contentView.addSubview(bodyLabel)
         scrollView.addSubview(contentView)
-        addSubview(scrollView)
+        contentView.addSubview(buttonStackView)
+        buttonStackView.addArrangedSubview(loginButton)
+        buttonStackView.addArrangedSubview(signUpButton)
     }
     
     func setupConstraints() {
@@ -121,9 +160,26 @@ class WelcomeView: UIView, CodeView {
         bodyLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Margin.verticalSmall).isActive = true
         bodyLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         bodyLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
+        
+        //PhoneTextField
+        phoneTextField.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: Margin.verticalLarge).isActive = true
+        phoneTextField.leadingAnchor.constraint(equalTo: bodyLabel.leadingAnchor).isActive = true
+        phoneTextField.trailingAnchor.constraint(equalTo: bodyLabel.trailingAnchor).isActive = true
+        
+        //ButtonStackView
+        buttonStackView.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: Margin.verticalNormal).isActive = true
+        buttonStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        
+        //Login/SignUp Buttons
+        loginButton.widthAnchor.constraint(equalToConstant: 120).isActive = true
+        loginButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        signUpButton.heightAnchor.constraint(equalTo: loginButton.heightAnchor).isActive = true
     }
     
     func setupExtraConfigurations() {
         backgroundColor = .view
+        loginButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        signUpButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
     }
 }

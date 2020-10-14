@@ -26,11 +26,12 @@ class WelcomeViewController: UIViewController {
 
 extension WelcomeViewController: WelcomeViewDelegate {
     func loginButtonTapped(withPhone: String) {
+        print("Botao \(withPhone)")
 
     }
     
     func signUpButtonTapped() {
-        
+        print("Deslogar")
     }
     
     func facebookButtonTapped() {
