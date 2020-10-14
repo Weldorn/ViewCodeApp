@@ -11,6 +11,7 @@
 		780F81F025366EDB006A026E /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F81EF25366EDB006A026E /* AppStyle.swift */; };
 		780F81F525366FC3006A026E /* UIColor + RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F81F425366FC3006A026E /* UIColor + RGB.swift */; };
 		780F81F825367FDD006A026E /* WelcomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F81F725367FDD006A026E /* WelcomeButton.swift */; };
+		780F81FB25368889006A026E /* HasCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F81FA25368889006A026E /* HasCodeView.swift */; };
 		78A57D91253660650011D49F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A57D90253660650011D49F /* AppDelegate.swift */; };
 		78A57D95253660650011D49F /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A57D94253660650011D49F /* WelcomeViewController.swift */; };
 		78A57D9A253660680011D49F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A57D99253660680011D49F /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		780F81EF25366EDB006A026E /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
 		780F81F425366FC3006A026E /* UIColor + RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + RGB.swift"; sourceTree = "<group>"; };
 		780F81F725367FDD006A026E /* WelcomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButton.swift; sourceTree = "<group>"; };
+		780F81FA25368889006A026E /* HasCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasCodeView.swift; sourceTree = "<group>"; };
 		78A57D8D253660650011D49F /* ViewCodeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewCodeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A57D90253660650011D49F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78A57D94253660650011D49F /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				780F81EA253664F3006A026E /* CodeView.swift */,
+				780F81FA25368889006A026E /* HasCodeView.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 				78A57DAB253661E00011D49F /* WelcomeView.swift in Sources */,
 				78A57D91253660650011D49F /* AppDelegate.swift in Sources */,
 				780F81EB253664F3006A026E /* CodeView.swift in Sources */,
+				780F81FB25368889006A026E /* HasCodeView.swift in Sources */,
 				780F81F825367FDD006A026E /* WelcomeButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
